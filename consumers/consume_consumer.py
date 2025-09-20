@@ -1,6 +1,6 @@
 from confluent_kafka import Consumer
 from confluent_kafka import KafkaException
-from consumers.base_consumer import BaseConsumer
+from base_consumer import BaseConsumer
 import pandas as pd
 import json
 import time
