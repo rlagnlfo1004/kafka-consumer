@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: archive to tar.gz
-      run: tar cvfz ./kafka-consumer.tar.gz *
+      run: tar cvfz ./kafka-consumers.tar.gz *
 
     - name: AWS configure credentials
       # aws 접속시 필요한 키 셋팅하는 사전 정의된 action 사용
@@ -32,10 +32,10 @@ jobs:
         aws-region: ap-northeast-2
 
     - name: upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./kafka-consumer.tar.gz s3://datalake-actions-deploy-hrkim/kafka-consumer/kafka-consumer.tar.gz
+      run: aws s3 cp --region ap-northeast-2 ./kafka-consumers.tar.gz s3://datalake-actions-deploy-hrkim/kafka-consumers/kafka-consumers.tar.gz
 
     - name: deploy with AWS codeDeploy
       run: aws deploy create-deployment
         --application-name datalake-deploy
-        --deployment-group-name kafka-deploy-consumer
-        --s3-location bucket=datalake-actions-deploy-hrkim,bundleType=tgz,key=kafka-consumer/kafka-consumer.tar.gz
+        --deployment-group-name kafka-deploy-consumers
+        --s3-location bucket=datalake-actions-deploy-hrkim,bundleType=tgz,key=kafka-consumers/kafka-consumers.tar.gz

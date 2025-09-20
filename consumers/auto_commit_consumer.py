@@ -45,7 +45,7 @@ class AutoCommitConsumer(BaseConsumer):
             self.logger.exception("Kafka exception occurred during message consumption")
 
         except KeyboardInterrupt:  # Ctrl + C 눌러 종료시
-            self.logger.info("Shutting down consumer due to keyboard interrupt.")
+            self.logger.info("Shutting down consumers due to keyboard interrupt.")
 
         finally:
             self.consumer.close()

@@ -1,6 +1,6 @@
 from confluent_kafka import Consumer
 from confluent_kafka import KafkaException
-from base_consumer import BaseConsumer
+from consumers.base_consumer import BaseConsumer
 import pandas as pd
 import json
 import time
@@ -50,7 +50,7 @@ class ConsumeConsumer(BaseConsumer):
             self.logger.exception("Kafka exception occurred during message consumption")
 
         except KeyboardInterrupt: # Ctrl + C 눌러 종료시
-            self.logger.info("Shutting down consumer due to keyboard interrupt.")
+            self.logger.info("Shutting down consumers due to keyboard interrupt.")
 
         finally:
             self.consumer.close()
