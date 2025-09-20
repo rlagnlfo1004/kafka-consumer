@@ -13,6 +13,7 @@ class BaseConsumer():
         logger.setLevel(logging.INFO)
         handler = logging.StreamHandler() # 생성된 로그 기록(LogRecord)을 특정 목적지(destination)로 보내는 역할
         handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s]:%(message)s'))
+        logger.addHandler(handler)
 
         return logger
 
